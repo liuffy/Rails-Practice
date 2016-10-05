@@ -12,4 +12,13 @@ FirstRoutes::Application.routes.draw do
   resources :contacts, :only => [:create, :destroy, :show, :update]
   resources :contact_shares, :only => [:create, :destroy]
 
+  resources :contacts do
+    post "favorite" => "contacts#favorite"
+  end
+
+  resources :contact_shares do
+    post "favorite" => "contact_shares#favorite"
+  end
+
+  # Use a nice custom route to accomplish this. Hint: http://guides.rubyonrails.org/v3.2.14/routing.html#adding-more-restful-actions
 end

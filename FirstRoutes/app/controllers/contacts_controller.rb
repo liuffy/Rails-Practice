@@ -1,5 +1,12 @@
 class ContactsController < ApplicationController
 
+  def favorite
+    contact = Contact.find(params[:contact_id])
+    contact.favorite = true
+    contact.save
+    render json: contact
+  end
+
   def index
   # Rewrite the index method to return (a) the Contacts owned by a user
   # plus (b) the Contacts shared with the user. You can access the specified

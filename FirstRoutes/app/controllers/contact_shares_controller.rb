@@ -1,5 +1,12 @@
 class ContactSharesController < ApplicationController
 
+  def favorite
+    share = ContactShare.find(params[:contact_share_id])
+    share.favorite = true
+    share.save
+    render json: share
+  end
+
   def create
     contact_share = ContactShare.new(contact_share_params)
     if contact_share.save
@@ -17,6 +24,7 @@ class ContactSharesController < ApplicationController
     contact_share.destroy
     render json: contact_share
   end
+
 
   private
 
